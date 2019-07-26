@@ -59,7 +59,13 @@ export class ProductListPage implements OnInit {
         this.userService.pay(this.finalValue, memo)
             .subscribe((data: any) => {
                 console.log(data);
+                history.back();
             });
+
+        // this.userService.purchase()
+        //     .subscribe((data: any) => {
+        //         history.back();
+        //     });
     }
 
     ngOnInit() {

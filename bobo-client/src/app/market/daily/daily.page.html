@@ -7,47 +7,47 @@
 </ion-header>
 
 <ion-content>
-    <div class="mbsc-grid">
-        <div class="mbsc-row mbsc-justify-content-center mbsc-no-padding">
-            <div class="mbsc-col-12 mbsc-col-sm-6 mbsc-col-lg-4 mbsc-col-xl-3"
-                 [attr.data-selected]="product._quantity ? true : null"
+    <div>
+        <div>
+            <div [attr.data-selected]="product._quantity ? true : null"
                  id="product-list" *ngFor="let product of products">
-                <mbsc-card>
+                <ion-card>
                     <img [src]="product.img" alt="" class="product-image" draggable="false">
-                    <mbsc-card-content>
-                        <mbsc-card-title>{{product.name}}</mbsc-card-title>
-                        <br>
+                    <ion-card-header>
+                        <ion-card-title>{{product.name}}</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content padding-top="0px">
                         <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                            <p class="mbsc-txt-muted">{{product.price}} DAI</p>
+                            <p class="mbsc-txt-muted" style = " font-size:1.5em;" align-self-center="true">{{product.price}} DAI</p>
                             <div item-end>
-                                <button ion-button color="primary" (click)="product._quantity = product._quantity - 1">
+                                <button ion-button color="primary" (click)="product._quantity = product._quantity - 1" [disabled]="product._quantity<=0">
                                     <ion-icon name="remove"></ion-icon>
                                 </button>
                                 <input ion-button clear style="text-align:center" type="tel" [(ngModel)]="product._quantity" name="quantity"
                                        class="input-quantity"/>
-                                <button ion-button color="primary" (click)="product._quantity = product._quantity + 1">
+                                <button ion-button size="small" color="primary" (click)="product._quantity = product._quantity + 1">
                                     <ion-icon name="add"></ion-icon>
                                 </button>
                             </div>
                         </div>
-                    </mbsc-card-content>
-                </mbsc-card>
+                    </ion-card-content>
+                </ion-card>
             </div>
         </div>
     </div>
 </ion-content>
 
-<ion-footer>P
+<ion-footer>
     <ion-list no-margin>
         <ion-item no-padding>
             <ion-label padding-left>
-                <strong>Checkout : </strong>
-                <span> {{finalValue}} DAI </span>
+                <strong style = " font-size:1.3em; color: royalblue;">Checkout : </strong>
+                <span style = " font-size:1.3em; "> {{finalValue}} DAI </span>
             </ion-label>
-            <button [disabled]="!finalValue" item-end ion-button color="primary" (click)="purchase()" icon-left>
+            <ion-button [disabled]="!finalValue" item-end ion-button color="primary" (click)="purchase()" icon-left>
                 <ion-icon name="cart"></ion-icon>
                 Purchase
-            </button>
+            </ion-button>
         </ion-item>
     </ion-list>
 </ion-footer>
